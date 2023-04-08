@@ -1,6 +1,6 @@
 {
   "name": "react-native-localization-settings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native module to expose per-app language preferences API on iOS and Android.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
