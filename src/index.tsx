@@ -24,6 +24,55 @@ const LocalizationSettings = LocalizationSettingsModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return LocalizationSettings.multiply(a, b);
+/**
+ * Get language
+ * @returns Language in IETF BCP 47 format (like 'en-US')
+ * @example
+ * console.log(getLanguage())
+ */
+export function getLanguage(): string {
+  LocalizationSettings.getLanguage();
+  return LocalizationSettings.language.split('_')[0];
+}
+
+/**
+ * Set language
+ * @param language - locale string
+ * @example
+ * Usage:
+ * setLanguage('en-US')
+ *
+ * Preferred format:
+ * IETF BCP 47 format - "en-US"
+ *
+ * Other:
+ * ISO 639-1 format - "en"
+ *
+ */
+export function setLanguage(language: string): void {
+  LocalizationSettings.setLanguage(language);
+}
+
+/**
+ * i18next language detector
+ * @example
+ * Usage:
+ * i18next
+ *   .use(ReactNativeLanguageDetector)
+ *   .init({
+ *     ...
+ *   });
+ */
+export const ReactNativeLanguageDetector: I18nLanguageDetectorModule = {
+  type: 'languageDetector',
+  init: () => {},
+  detect: () => getLanguage(),
+  cacheUserLanguage: (lng: string) => setLanguage(lng),
+};
+
+interface I18nLanguageDetectorModule {
+  type: 'languageDetector';
+  init?(): void;
+  detect(): string | readonly string[] | undefined;
+  cacheUserLanguage?(lng: string): void;
 }
