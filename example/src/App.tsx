@@ -1,18 +1,56 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-localization-settings';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { ReactNativeLanguageDetector } from 'react-native-localization-settings';
+import i18next from 'i18next';
+import { initReactI18next, useTranslation } from 'react-i18next';
+
+i18next
+  .use(ReactNativeLanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: {
+        translation: {
+          key: 'hello world in english',
+        },
+      },
+      pl: {
+        translation: {
+          key: 'hello world in polish',
+        },
+      },
+      fr: {
+        translation: {
+          key: 'hello world in french',
+        },
+      },
+    },
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+    compatibilityJSON: 'v3',
+  });
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>{t('key')}</Text>
+      <Button
+        title={'change to pl'}
+        onPress={() => i18next.changeLanguage('pl-PL')}
+      />
+      <Button
+        title={'change to en'}
+        onPress={() => i18next.changeLanguage('en-US')}
+      />
+      <Button
+        title={'change to fr'}
+        onPress={() => i18next.changeLanguage('fr-FR')}
+      />
     </View>
   );
 }
