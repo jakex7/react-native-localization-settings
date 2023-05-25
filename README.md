@@ -16,7 +16,7 @@ SharedPreferences to store the language._
 
 ## Installation
 
-To get started with `react-native-localization-settings`, you'll need to install it using npm:
+To get started with `react-native-localization-settings`, you'll need to install it using npm or yarn:
 
 ```sh
 npm install react-native-localization-settings
