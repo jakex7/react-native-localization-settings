@@ -16,7 +16,7 @@ SharedPreferences to store the language._
 
 ## Installation
 
-To get started with `react-native-localization-settings`, you'll need to install it using npm:
+To get started with `react-native-localization-settings`, you'll need to install it using npm or yarn:
 
 ```sh
 npm install react-native-localization-settings
@@ -37,6 +37,7 @@ Function to get current language.
 Returns Language in IETF BCP 47 format (like 'en-US')
 
 ```ts
+import { getLanguage } from 'react-native-localization-settings';
 getLanguage(); // 'en-US'
 ```
 
@@ -46,6 +47,7 @@ Function to set the current language.
 It accepts a string with language code in IETF BCP 47 format (like 'en-US') or ISO 639-1 format (like 'en').
 
 ```ts
+import { setLanguage } from 'react-native-localization-settings';
 setLanguage("en-US");
 ```
 
