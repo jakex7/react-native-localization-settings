@@ -23,10 +23,12 @@ class LocalizationSettingsModule internal constructor(context: ReactApplicationC
    * if country is not available in locale, then use system defaults (even if it's not 100% correct, like "pl-US")
    **/
   private fun getLanguageTag(language: String): String {
-    // if language have format language_COUNTRY, then return it
-    if (Locale(language).country != "") return Locale(language).toLanguageTag()
+    val locale = Locale.forLanguageTag(language);
+
+    // if language has format language-COUNTRY, then return it
+    if (locale.country != "") return locale.toLanguageTag()
     // fallback for system country
-    return "$language-${Locale.getDefault().country}"
+    return Locale(locale.language, Locale.getDefault().country).toLanguageTag()
   }
 
 
