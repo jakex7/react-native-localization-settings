@@ -32,7 +32,7 @@ const LocalizationSettings = LocalizationSettingsModule
  */
 export function getLanguage(): string {
   LocalizationSettings.getLanguage();
-  return LocalizationSettings.language.split('_')[0];
+  return LocalizationSettings.getConstants().language.split('_')[0];
 }
 
 /**

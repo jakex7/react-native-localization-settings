@@ -73,6 +73,7 @@ RCT_REMAP_METHOD(setLanguage,
 {
     return @{ @"language": [self getCurrentLanguage]};
 }
+
 +(BOOL)requiresMainQueueSetup
 {
     return YES;
@@ -85,6 +86,11 @@ RCT_REMAP_METHOD(setLanguage,
 {
     return std::make_shared<facebook::react::NativeLocalizationSettingsSpecJSI>(params);
 }
+
+- (facebook::react::ModuleConstants<JS::NativeLocalizationSettings::Constants::Builder>)getConstants {
+  return [self constantsToExport];
+}
+
 #endif
 
 @end
