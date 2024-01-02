@@ -10,11 +10,11 @@ RCT_EXPORT_MODULE()
  **/
 -(NSString*) getLanguageTag:(NSString *)language {
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
-    if ([locale countryCode]) {
+    if ([locale regionCode]) {
         return [locale localeIdentifier];
     }
     NSLocale *currentLocale = [NSLocale currentLocale];
-    return [[locale languageCode] stringByAppendingFormat:@"-%@", [currentLocale countryCode]];
+    return [[locale languageIdentifier] stringByAppendingFormat:@"-%@", [currentLocale regionCode]];
 }
 
 -(NSString*) getUserLocale {
