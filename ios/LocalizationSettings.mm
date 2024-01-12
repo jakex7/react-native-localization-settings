@@ -10,11 +10,23 @@ RCT_EXPORT_MODULE()
  **/
 -(NSString*) getLanguageTag:(NSString *)language {
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
-    if ([locale regionCode]) {
+    NSString *countryCode;
+
+    if (@available(iOS 17.0, *)) {
+        countryCode = [locale regionCode];
+    } else {
+        countryCode = [locale countryCode];
+    }
+
+    if (countryCode) {
         return [locale localeIdentifier];
     }
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    return [[locale languageIdentifier] stringByAppendingFormat:@"-%@", [currentLocale regionCode]];
+
+    if (@available(iOS 17.0, *)) {
+        return [[locale languageIdentifier] stringByAppendingFormat:@"-%@", countryCode];
+    }
+
+    return [[[locale languageCode] stringByAppendingFormat:@"-%@", [locale scriptCode]] stringByAppendingFormat:@"-%@", countryCode];
 }
 
 -(NSString*) getUserLocale {
