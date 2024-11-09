@@ -50,6 +50,16 @@ RCT_EXPORT_MODULE()
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+- (void)getLanguage:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
+    resolve([self getCurrentLanguage]);
+}
+
+
+- (void)setLanguage:(NSString *)lang {
+    [self setCurrentLanguage:lang];
+}
+
 /**
  * Expose functions to react-native
  **/
@@ -57,13 +67,13 @@ RCT_REMAP_METHOD(getLanguage,
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withReject:(RCTPromiseRejectBlock)reject)
 {
-    resolve([self getCurrentLanguage]);
+    return [self getLanguage:resolve reject:reject];
 }
 
 RCT_REMAP_METHOD(setLanguage,
                  language:(NSString *)lang)
 {
-    [self setCurrentLanguage:lang];
+    return [self setLanguage:lang];
 }
 
 /**

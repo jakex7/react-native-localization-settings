@@ -96,10 +96,10 @@ class LocalizationSettingsModule internal constructor(context: ReactApplicationC
   /**
    * Expose constants to react-native
    **/
-  override fun getTypedExportedConstants(): MutableMap<String, String?>? {
-    val constants: MutableMap<String, String?> = HashMap()
-    constants["language"] = getCurrentLanguage()
-    return constants
+  override fun getTypedExportedConstants(): Map<String, String?> {
+    return mapOf(
+      "language" to getCurrentLanguage()
+    )
   }
 
   /**
