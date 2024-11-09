@@ -9,4 +9,9 @@ abstract class LocalizationSettingsSpec internal constructor(context: ReactAppli
 
   abstract fun getLanguage(promise: Promise)
   abstract fun setLanguage(language: String)
+  abstract fun getTypedExportedConstants(): Map<String, String?>?
+
+  override fun getConstants(): Map<String, String?>? {
+    return getTypedExportedConstants()
+  }
 }
