@@ -1,9 +1,12 @@
-import * as React from 'react';
-
+import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { ReactNativeLanguageDetector } from 'react-native-localization-settings';
 import i18next from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
+import {
+  getLanguage,
+  getLanguageAsync,
+  ReactNativeLanguageDetector,
+} from 'react-native-localization-settings';
 
 i18next
   .use(ReactNativeLanguageDetector)
@@ -35,21 +38,26 @@ i18next
 
 export default function App() {
   const { t } = useTranslation();
+  const [lang, setLang] = React.useState(getLanguage());
 
+  const changeLanguage = (language: string) => () => {
+    i18next.changeLanguage(language);
+    setLang(getLanguage());
+  };
   return (
     <View style={styles.container}>
       <Text>{t('key')}</Text>
+      <Text>{lang}</Text>
+      <Button title={'change to pl'} onPress={changeLanguage('pl-PL')} />
+      <Button title={'change to en'} onPress={changeLanguage('en-US')} />
+      <Button title={'change to fr'} onPress={changeLanguage('fr-FR')} />
       <Button
-        title={'change to pl'}
-        onPress={() => i18next.changeLanguage('pl-PL')}
+        title={'get language sync'}
+        onPress={() => console.log(getLanguage())}
       />
       <Button
-        title={'change to en'}
-        onPress={() => i18next.changeLanguage('en-US')}
-      />
-      <Button
-        title={'change to fr'}
-        onPress={() => i18next.changeLanguage('fr-FR')}
+        title={'get language async'}
+        onPress={() => getLanguageAsync().then(console.log)}
       />
     </View>
   );
