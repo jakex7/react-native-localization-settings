@@ -25,14 +25,34 @@ const LocalizationSettings = LocalizationSettingsModule
     );
 
 /**
- * Get language
+ * Get language (sync)
  * @returns Language in IETF BCP 47 format (like 'en-US')
  * @example
  * console.log(getLanguage())
  */
 export function getLanguage(): string {
-  LocalizationSettings.getLanguage();
   return LocalizationSettings.getConstants().language.split('_')[0];
+}
+
+/**
+ * Get language (async)
+ * @param fallback - fallback language
+ * @returns Promise with Language in IETF BCP 47 format (like 'en-US')
+ * @example
+ * getLanguageAsync().then(console.log)
+ */
+export function getLanguageAsync(fallback?: string): Promise<string> {
+  return LocalizationSettings.getLanguage()
+    .then((res: string) => res.split('_'))
+    .then((res: string[]) => {
+      if (res[0]) {
+        return res[0];
+      }
+      if (fallback) {
+        return fallback;
+      }
+      throw new Error('Invalid language format');
+    });
 }
 
 /**
