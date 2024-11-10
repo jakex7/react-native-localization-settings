@@ -1,0 +1,9 @@
+{
+  "sourceLanguage" : "Base",
+  "strings" : {
+    "react-native-localization-settings" : {
+      "extractionState" : "manual"
+    }
+  },
+  "version" : "1.0"
+}

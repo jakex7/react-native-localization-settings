@@ -14,7 +14,7 @@
 		96905EF65AED1B983A6B3ABC /* libPods-exampleexpo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-exampleexpo.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		4748D1075BE14BEE8B534397 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC2BEA8D20C489BB288EE84 /* noop-file.swift */; };
+		83A5758C5B5B41B383ED73D2 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164D6D9EB4EE48FB96652C6B /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,9 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-exampleexpo/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		EEC2BEA8D20C489BB288EE84 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "exampleexpo/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		AAEE8D227F904934B9CAD883 /* exampleexpo-Bridging-Header.h */ = {isa = PBXFileReference; name = "exampleexpo-Bridging-Header.h"; path = "exampleexpo/exampleexpo-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		164D6D9EB4EE48FB96652C6B /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "exampleexpo/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		022255D9C70C47BFA9E368DA /* exampleexpo-Bridging-Header.h */ = {isa = PBXFileReference; name = "exampleexpo-Bridging-Header.h"; path = "exampleexpo/exampleexpo-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		CEB5EDBB0F7F43AB82676466 /* Localizable.xcstrings */ = {isa = PBXFileReference; name = "Localizable.xcstrings"; path = "Localizable.xcstrings"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +58,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				EEC2BEA8D20C489BB288EE84 /* noop-file.swift */,
-				AAEE8D227F904934B9CAD883 /* exampleexpo-Bridging-Header.h */,
+				164D6D9EB4EE48FB96652C6B /* noop-file.swift */,
+				022255D9C70C47BFA9E368DA /* exampleexpo-Bridging-Header.h */,
 			);
 			name = exampleexpo;
 			sourceTree = "<group>";
@@ -88,6 +89,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
+				CEB5EDBB0F7F43AB82676466 /* Localizable.xcstrings */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -177,8 +179,9 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
+				pl,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -198,7 +201,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				D70D8277C904490E86FF31B3 /* exampleexpo-Bridging-Header.h in Resources */,
+				141AF23309DC4B99A0B55932 /* exampleexpo-Bridging-Header.h in Resources */,
+				044D84BC7C1F446199BEF2B6 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +278,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				4748D1075BE14BEE8B534397 /* noop-file.swift in Sources */,
+				83A5758C5B5B41B383ED73D2 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
