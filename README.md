@@ -129,18 +129,31 @@ setLanguage("en-US");
 ## i18next
 
 This library is fully compatible with [i18next](https://www.i18next.com/).
-To use it with i18next, you need to use `ReactNativeLanguageDetector` before init function:
 
+To use it with i18next, create a language detector by using `createLanguageDetector` with the specified `options`:
 ```ts
-import { ReactNativeLanguageDetector } from 'react-native-localization-settings';
+import { createLanguageDetector } from 'react-native-localization-settings';
+
+const languageDetector = createLanguageDetector({});
 
 i18next
-  .use(ReactNativeLanguageDetector)
+  .use(languageDetector)
   .use(initReactI18next)
   .init({
     // ...
   });
 ```
+
+### Options
+
+```ts
+type LanguageDetectorOptions = {
+  cacheCurrentLanguage?: boolean; // default: false - sets current detected language
+  async?: boolean;                // default: false - uses getLanguageAsync (set to true on old architecture)
+};
+```
+
+### Changing language
 
 Then, if you want to create custom in-app language selector, you should be able to change the language (along with the
 settings per-app language) using standard i18next function:
