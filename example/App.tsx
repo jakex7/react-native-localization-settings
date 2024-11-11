@@ -3,13 +3,15 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 import i18next from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import {
+  createLanguageDetector,
   getLanguage,
   getLanguageAsync,
-  ReactNativeLanguageDetector,
 } from 'react-native-localization-settings';
 
+const languageDetector = createLanguageDetector();
+
 i18next
-  .use(ReactNativeLanguageDetector)
+  .use(languageDetector)
   .use(initReactI18next)
   .init({
     resources: {
