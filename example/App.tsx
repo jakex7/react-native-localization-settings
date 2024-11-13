@@ -6,6 +6,7 @@ import {
   createLanguageDetector,
   getLanguage,
   getLanguageAsync,
+  setDefaultLanguage,
 } from 'react-native-localization-settings';
 
 const languageDetector = createLanguageDetector();
@@ -53,6 +54,7 @@ export default function App() {
       <Button title={'change to pl'} onPress={changeLanguage('pl-PL')} />
       <Button title={'change to en'} onPress={changeLanguage('en-US')} />
       <Button title={'change to fr'} onPress={changeLanguage('fr-FR')} />
+      <Button title={'unset'} onPress={setDefaultLanguage} />
       <Button
         title={'get language sync'}
         onPress={() => console.log(getLanguage())}

@@ -72,3 +72,13 @@ export function getLanguageAsync(fallback?: string): Promise<string> {
 export function setLanguage(language: string): void {
   LocalizationSettings.setLanguage(language);
 }
+
+/**
+ * Set default language (unset previously set language)
+ * @example
+ * Usage:
+ * setDefaultLanguage()
+ */
+export function setDefaultLanguage(): void {
+  LocalizationSettings.setDefaultLanguage();
+}
