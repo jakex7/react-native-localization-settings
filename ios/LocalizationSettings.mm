@@ -17,26 +17,12 @@ RCT_EXPORT_MODULE()
     return [[locale languageCode] stringByAppendingFormat:@"-%@", [currentLocale countryCode]];
 }
 
--(NSString*) getUserLocale {
-    NSArray* locales = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-    if (locales == nil ) { return nil; }
-    if ([locales count] == 0) { return nil; }
-
-    NSString* userLocale = locales[0];
-    return userLocale;
-}
-
 /**
  * Get current language
  * returns string in IETF BCP 47 (language-COUNTRY "pl-PL")
  **/
 - (NSString *)getCurrentLanguage {
-    NSString *userLocale = [self getUserLocale];
-    if (userLocale) {
-        return userLocale;
-        
-    }
-    return [[NSLocale preferredLanguages] objectAtIndex:0];
+    return [self getLanguageTag:[[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0]];
 }
 
 /**
