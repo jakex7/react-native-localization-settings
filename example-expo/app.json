@@ -25,12 +25,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "languages": ["en", "pl"],
     "plugins": [
       [
-        "../app.plugin.js", 
-        { 
-          "languages": ["en", "pl"] 
+        "../app.plugin.js",
+        {
+          "languages": ["en", "pl"]
         }
       ]
     ]

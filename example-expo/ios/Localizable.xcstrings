@@ -1,8 +1,12 @@
 {
-  "sourceLanguage" : "Base",
+  "sourceLanguage" : "en",
   "strings" : {
     "react-native-localization-settings" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {"stringUnit" : {"state" : "translated","value" : ""}},
+        "pl" : {"stringUnit" : {"state" : "translated","value" : ""}},
+      }
     }
   },
   "version" : "1.0"
