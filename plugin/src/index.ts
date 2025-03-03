@@ -3,10 +3,11 @@ import { withAndroidLanguages } from './android';
 import { withIosLanguages } from './ios';
 
 const withReactNativeLocalizationSettings: ConfigPlugin<{
+  defaultLanguage?: string;
   languages?: string[];
-}> = (config, { languages = [] } = {}) => {
+}> = (config, { defaultLanguage, languages = [] } = {}) => {
   config = withAndroidLanguages(config, { languages });
-  config = withIosLanguages(config, { languages });
+  config = withIosLanguages(config, { defaultLanguage, languages });
 
   return config;
 };

@@ -4,8 +4,11 @@ import {
   withXcodeProject,
 } from '@expo/config-plugins';
 
-const generateLocalizableContent = (languages: string[]) => `{
-  "sourceLanguage" : "${languages[0]}",
+const generateLocalizableContent = (
+  languages: string[],
+  defaultLanguage?: string
+) => `{
+  "sourceLanguage" : "${defaultLanguage || languages[0]}",
   "strings" : {
     "react-native-localization-settings" : {
       "extractionState" : "manual",
@@ -23,8 +26,9 @@ const generateLocalizableContent = (languages: string[]) => `{
 }`;
 
 export const withIosLanguages: ConfigPlugin<{
+  defaultLanguage?: string;
   languages?: string[];
-}> = (config, { languages = [] } = {}) => {
+}> = (config, { defaultLanguage, languages = [] } = {}) => {
   config = withXcodeProject(config, (config) => {
     const project = config.modResults;
     const projectObject =
@@ -38,7 +42,7 @@ export const withIosLanguages: ConfigPlugin<{
         project,
         nativeProjectRoot: config.modRequest.platformProjectRoot,
         filePath: 'Localizable.xcstrings',
-        fileContents: generateLocalizableContent(languages),
+        fileContents: generateLocalizableContent(languages, defaultLanguage),
         overwrite: true,
       });
     }
