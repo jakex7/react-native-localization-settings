@@ -41,14 +41,13 @@ class LocalizationSettingsModule internal constructor(context: ReactApplicationC
   private fun getCurrentLanguage(): String? {
     // If API version is >= 33, then use per-app language settings
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      val currentLocaleName = if (!AppCompatDelegate.getApplicationLocales().isEmpty) {
+      if (!AppCompatDelegate.getApplicationLocales().isEmpty) {
         // get per-app language
-        AppCompatDelegate.getApplicationLocales()[0]?.toLanguageTag()
+        return AppCompatDelegate.getApplicationLocales()[0]?.toLanguageTag()
       } else {
         // Fallback to the default System Locale
-        Locale.getDefault().toLanguageTag()
+        return Locale.getDefault().toLanguageTag()
       }
-      return currentLocaleName
     }
     // if API is < 33, then use SharedPreferences with fallback to default System Locale
     if (getPreferences().getString("languageFrom", null) == Locale.getDefault().language) {
@@ -79,6 +78,27 @@ class LocalizationSettingsModule internal constructor(context: ReactApplicationC
     }
   }
 
+  /**
+   * Set default language
+   *  If API version >= 33, use native per-app language feature
+   *  else, fallback to SharedPreferences
+   **/
+  private fun unsetLanguage() {
+    // use per-app language settings
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      val defaultLocales = LocaleListCompat.getEmptyLocaleList()
+      AppCompatDelegate.setApplicationLocales(defaultLocales)
+      val test = Locale.getDefault()
+      val test2 = Locale.getDefault()
+    } else {
+      // use SharedPreferences language
+      val editor = getEditor();
+      editor.putString("languageFrom", Locale.getDefault().language)
+      editor.putString("language", Locale.getDefault().language)
+      editor.apply()
+    }
+  }
+
 
   /**
    * Expose functions to react-native
@@ -91,6 +111,11 @@ class LocalizationSettingsModule internal constructor(context: ReactApplicationC
   @ReactMethod
   override fun setLanguage(language: String) {
     setCurrentLanguage(language)
+  }
+
+  @ReactMethod
+  override fun setDefaultLanguage() {
+    unsetLanguage()
   }
 
   /**
